@@ -1,12 +1,10 @@
-.container{
+.custom-container{
   border: 1px solid black;
-  margin: 50px 60px;
-  padding: auto 50px;
+  margin: 50px 300px;
+ 
 
 }
-.container:h1{
-  text-align: center;
-}
+
 .current-weather{
   display: block;
   justify-content: end;
@@ -14,9 +12,10 @@
  
 }
 .temperature{
-  font-size: 52px;
+  font-size: 55px;
 }
 .units{
   margin-top: 10px;
-  margin-right: -5px;
+  margin-right: 50px;
+  margin-left: -11px;
 }
