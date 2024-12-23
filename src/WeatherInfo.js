@@ -29,7 +29,7 @@ export default function WeatherInfo(props){
 <div><strong>Weather</strong>
 
 </div>
-<div>
+<div class="text-capitalize">
 {props.data.description} 
 </div>
 <div>
