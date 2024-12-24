@@ -1,21 +1,31 @@
 .custom-container{
   border: 1px solid black;
-  margin: 50px 300px;
- 
-
+  margin: 50px 250px;
 }
 
 .current-weather{
   display: block;
   justify-content: end;
   color:#5e5e5e ;
+}
  
-}
-.temperature{
-  font-size: 55px;
-}
-.units{
-  margin-top: 10px;
-  margin-right: 50px;
-  margin-left: -11px;
+  .temperature {
+    font-size: 65px;
+    line-height: 1;
+  }
+  
+  .d-flex {
+    align-items: flex-start; 
+  }
+  
+  .units {
+    display: inline-block;
+    margin-left: 5px;
+    transform: translateY(5px); 
+    font-size: 16px; 
+  }
+  
+.input-city{
+  border: 3px solid black;
+  padding: 2px;
 }

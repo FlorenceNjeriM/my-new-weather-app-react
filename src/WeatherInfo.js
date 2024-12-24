@@ -1,6 +1,8 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon.js";
+import WeatherTemperature from "./WeatherTemperature.js";
+import "./index.css";
 
 export default function WeatherInfo(props){
     return(
@@ -9,14 +11,13 @@ export default function WeatherInfo(props){
                 {props.data.city}
             </h1>
         <div className="row">
-            <div className="col-10 d-flex gap-3">
+            <div className="col-10  gap-3 d-flex">
               <div className="float-left">
               <WeatherIcon code= {props.data.icon} alt={props.data.description} /> 
               </div>
-              
-            
-            <div className="fw-semibold temperature"><span >{Math.round(props.data.temperature)}</span></div>
-            <div  className="units"><span>°C</span><span> | °F </span></div>
+              <div >
+              <WeatherTemperature celsius= {props.data.temperature}/>
+              </div>
             
   <span className="current-weather">
     <div> Wind: {props.data.wind} km/hr
