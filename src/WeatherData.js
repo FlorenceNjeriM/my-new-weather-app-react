@@ -1,33 +1,58 @@
-import React from "react";
-import WeatherIcon from "./WeatherIcon";
+import React, { useState, useEffect } from "react";
+import WeatherForecastDay from "./WeatherForecastDay";
 import axios from "axios";
-import "./Weatherforecast.css"
+import "./Weatherforecast.css";
 
-export default function WeatherData (props){
-    function handleResponse(response){
-        console.log (response.data);
-    }
-console.log(props)
+export default function WeatherData(props) {
+  const [loaded, setLoaded] = useState(false);
+  const [forecast, setForecast] = useState([]);
 
-   let apiKey= "ed1ac087e9a0cc53ed6f2aafa50655f1";
-let latitude=props.coordinates.lat;
-let longitude=props.coordinates.lon;
-   let apiUrl= `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
+  useEffect(() => {
+    const apiKey = "ed1ac087e9a0cc53ed6f2aafa50655f1";
+    const latitude = props.coordinates.lat;
+    const longitude = props.coordinates.lon;
 
-    axios.get(apiUrl).then(handleResponse)
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
-    return(
-        <div className="WeatherForecast">
-            <div className="row">
-                <div className="col">
-               <div className="WeatherForecast-day"> Thu 
-               </div> 
-               <div className="WeatherForecast-icon"><WeatherIcon code="13n"  width={45} height={45}/></div> 
-               <div className="WeatherForecast-temperature"> <span className="temp-max">19°</span> <span className="temp-min">10°</span>  
-                </div> 
-                </div>
-               
-            </div>
-        </div>
-    )
+    axios.get(apiUrl).then((response) => {
+      const filteredForecast = filterForecast(response.data.list);
+      setForecast(filteredForecast); 
+      setLoaded(true); 
+    });
+  }, [props.coordinates]);
+  console.log(forecast);
+
+ 
+  function filterForecast(forecasts) {
+    const dailyForecasts = [];
+    const datesSeen = new Set();
+
+    forecasts.forEach((forecast) => {
+      const date = forecast.dt_txt.split(" ")[0]; 
+      const time = forecast.dt_txt.split(" ")[1]; 
+
+      if (!datesSeen.has(date) && time === "12:00:00") {
+        dailyForecasts.push(forecast);
+        datesSeen.add(date);
+      }
+    });
+
+    return dailyForecasts;
+  }
+
+  if (!loaded) {
+    return null; 
+  }
+
+  return (
+    <div className="WeatherForecast">
+      <div className="row">
+        {forecast.map((dailyForecast, index) => (
+          <div className="col" key={index}>
+            <WeatherForecastDay data={dailyForecast} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
