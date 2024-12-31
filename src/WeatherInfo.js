@@ -13,7 +13,7 @@ export default function WeatherInfo(props){
             </h1>
         <div className="row">
             <div className="col-10  gap-3 d-flex">
-              <div className="float-left">
+              <div className="float-left mb-5 mt-5weatherIcon">
               <WeatherIcon code= {props.data.icon} alt={props.data.description} width={70} height={70}/> 
               </div>
               <div >
