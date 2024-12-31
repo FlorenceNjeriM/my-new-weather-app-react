@@ -3,25 +3,25 @@ import { WeatherSvg } from "weather-icons-animated";
 
 export default function WeatherIcon(props) {
   const codeMapping = {
-    "01d": "sunny",
-    "01n": "clear-night",
-    "02d": "partly-cloudy",
-    "02n": "cloudy",
-    "03d": "partly-cloudy",
-    "03n": "cloudy",
-    "04d": "cloudy",
-    "04n": "cloudy",
-    "09d": "rainy",
-    "09n": "rainy",
-    "10d": "pouring",
-    "10n": "pouring",
-    "11d": "hail",
-    "11n": "hail",
-    "13d": "snowy",
-    "13n": "snowy-rainy",
-    "50d": "fog",
-    "50n": "fog",
-  };
+    "clear-sky-day": "sunny",
+    "clear-sky-night": "clear-night",
+    "few-clouds-day": "partlycloudy",
+    "few-clouds-night": "cloudy",
+    "scattered-clouds-day": "partlycloudy",
+    "scattered-clouds-night": "cloudy",
+    "broken-clouds-day": "cloudy",
+    "broken-clouds-night": "cloudy",
+    "shower-rain-day": "rainy",
+    "shower-rain-night": "rainy",
+    "rain-day": "pouring",
+    "rain-night": "pouring",
+    "thunderstorm-day": "hail",
+    "thunderstorm-night": "hail",
+    "snow-day": "snowy",
+    "snow-night": "snowy-rainy",
+    "mist-day": "fog",
+    "mist-night": "fog"
+  }
 
   const iconState = codeMapping[props.code] || "sunny"; 
  
