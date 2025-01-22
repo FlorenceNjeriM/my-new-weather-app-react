@@ -45,7 +45,8 @@ export default function Weatherr(props) {
 
   if (weatherData.ready) {
     return (
-      <div className="custom-container p-3">
+      <div className="container p-3 ">
+        <div className="weather">
 
         <form className=" container mt-3 " onSubmit={handleSubmit}>
           <div className="row">
@@ -63,6 +64,7 @@ export default function Weatherr(props) {
         <WeatherInfo data={weatherData} />
         <div>
           <WeatherData coordinates={weatherData.coordinates} />
+        </div>
         </div>
       </div>
     )
